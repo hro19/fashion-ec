@@ -1,0 +1,2 @@
+# fashion-ec
+rails ecサイト
