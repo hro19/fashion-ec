@@ -7,6 +7,8 @@ COPY Gemfile.lock /rails_practice/Gemfile.lock
 RUN bundle install
 COPY . /rails_practice
 
+RUN apt-get update && apt-get install -y nodejs npm
+
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
