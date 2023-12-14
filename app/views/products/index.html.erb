@@ -1,12 +1,12 @@
 <div class="jumbotron top-img">
-  <p class="text-center text-white top-img-text">テクピットクローズ</p>
+  <p class="text-center text-green-400 top-img-text bg-pink-100 py-8">テクピットクローズ</p>
 </div>
 
 <div class="container">
-  <div class="top__title text-center">
+  <div class="top__title text-center py-8">
     All Products
   </div>
-  <div class="row">
+  <div class="grid grid-cols-3 gap-3">
     <% @products.each do |product| %>
       <%= link_to "http://example.com", class: "col-lg-4 col-md-6" do %>
         <div class="card">
