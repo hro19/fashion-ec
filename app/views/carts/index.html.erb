@@ -1,11 +1,13 @@
 <div class="container">
-  <div class="cart__title">
+  <h2 class="cart__title text-2xl font-bold mb-4 border-b-2">
     カート
-  </div>
+  </h2>
 
+  <%#= debug @cart %>
   <% if @cart.line_items.count > 0 %>
-    <div class="cart-wrapper">
+    <div class="grid grid-cols-2 gap-2">
       <% @cart.line_items.each do |line_item| %>
+        <%= debug line_item %>
         <div class="card mb-3">
           <div class="row" style="flex-wrap: unset">
             <%= image_tag line_item.product.image, class: "product-cart-img" %>
