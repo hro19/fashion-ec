@@ -16,6 +16,7 @@
       <div class="product__quantity">
         <%= f.number_field :quantity, in: 1..10, value: 1,class: "block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
       </div>
+      <p>最終更新日:<%= updated_at_jp(@product.updated_at) %></p>
       <div class="product__btn-add-cart">
         <%= f.submit "カートに追加する", class: "bg-blue-400 hover:bg-blue-300 text-white rounded px-4 py-2 mt-2" %>
       </div>
