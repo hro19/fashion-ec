@@ -1,29 +1,23 @@
-<div class="container">
+<div class="container mx-auto">
   <h2 class="cart__title text-2xl font-bold mb-4 border-b-2">
     カート
   </h2>
 
   <%#= debug @cart %>
   <% if @cart.line_items.count > 0 %>
-    <div class="grid grid-cols-2 gap-2">
+    <div class="my-4">
       <% @cart.line_items.each do |line_item| %>
-        <%= debug line_item %>
-        <div class="card mb-3">
-          <div class="row" style="flex-wrap: unset">
-            <%= image_tag line_item.product.image, class: "product-cart-img" %>
-            <div class="card-body">
-              <div class="card-product-name col-6">
-                <%= line_item.product.name %>
+        <% # = debug line_item %>
+        
+          <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg mb-3 shadow md:flex-row md:max-w-xl">
+              <%= image_tag line_item.product.image, class: "object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" %>
+              <div class="flex flex-col justify-between p-4 leading-normal">
+                  <h5 class="mb-2 text-2xl font-bold"><%= line_item.product.name %></h5>
+                  <p class="mb-3 font-normal"><%= line_item.quantity %> 個</p>
+                  <p class="mb-3 font-normal"><%= line_item.amount %> 円</p>
               </div>
-              <div class="card-quantity col-2">
-                <%= line_item.quantity %> 個
-              </div>
-              <div class="card__total-price col-3 text-center">
-                <%= line_item.amount %> 円
-              </div>
-            </div>
           </div>
-        </div>
+
       <% end %>
     </div>
     <div class="cart__sub-total">
