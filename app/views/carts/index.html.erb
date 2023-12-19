@@ -15,6 +15,11 @@
                   <h5 class="mb-2 text-2xl font-bold"><%= line_item.product.name %></h5>
                   <p class="mb-3 font-normal"><%= line_item.quantity %> 個</p>
                   <p class="mb-3 font-normal"><%= line_item.amount %> 円</p>
+                  <div class="card__btn-trash col-1">
+                    <%= button_to line_item_path(line_item), method: :delete, data: { turbo_frame: "cart" }, class: "btn-trash" do %>
+                      <i class="fa fa-trash-alt"></i>
+                    <% end %>
+                  </div>
               </div>
           </div>
 
