@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:index]
 
-  get 'payments/checkout', to: 'payments#checkout'
+  namespace :payments do
+    get 'checkout'
+    get 'success'
+  end
 end

@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_cart, only: %i[checkout]
+  before_action :set_cart, only: %i[checkout success]
  
   def checkout
     line_items = []
@@ -22,8 +22,13 @@ class PaymentsController < ApplicationController
       payment_method_types: ['card'],
       line_items: line_items,
       mode: 'payment',
-      success_url: root_url,
+      success_url: payments_success_url,
       cancel_url: carts_url,
     })
+  end
+
+  def success
+    @cart.line_items.delete_all
+    redirect_to root_path
   end
 end
