@@ -14,7 +14,7 @@
               <div class="flex flex-col justify-between px-4 leading-normal">
                   <h5 class="text-xl font-bold"><%= line_item.product.name %></h5>
                   <p class="mb-1 font-normal"><%= line_item.quantity %> 個</p>
-                  <p class="mb-1 font-normal"><%= line_item.amount %> 円</p>
+                  <p class="mb-1 font-normal"><%= include_tax_in_yen(line_item.amount) %> 円</p>
                   <div class="card__btn-trash col-1">
                     <%= button_to line_item_path(line_item), method: :delete, data: { turbo_frame: "cart" }, class: "btn-trash" do %>
                       <i class="fa fa-trash-alt"></i>
@@ -26,7 +26,7 @@
       <% end %>
     </div>
     <div class="border-b border-gray-200">
-      小計： <%= @cart.sub_total %> 円
+      小計：¥<%= include_tax_in_yen(@cart.sub_total) %> 円
     </div>
     <p class="my-5">
     <%= link_to "購入する", payments_checkout_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' %>

@@ -7,7 +7,7 @@
         <%= @product.name %>
       </div>
       <div class="product__price">
-        ¥<%= number_to_delimited(@product.price) %>
+        税込み価格：¥<%= include_tax_in_yen(@product.price) %>
       </div>
     </div>
     <%= @product.description %>

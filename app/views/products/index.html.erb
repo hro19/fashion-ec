@@ -17,7 +17,7 @@
             </p>
             <p class="card-text">
               ¥<%= number_to_delimited(product.price) %>
-              (税込み価格：¥<%= include_tax_in_yen(3000) %>)
+              (税込み価格：¥<%= include_tax_in_yen(product.price) %>)
             </p>
           </div>
         </div>
