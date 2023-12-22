@@ -13,7 +13,10 @@
               <%= image_tag line_item.product.image, class: "object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" %>
               <div class="flex flex-col justify-between px-4 leading-normal">
                   <h5 class="text-xl font-bold"><%= line_item.product.name %></h5>
-                  <p class="mb-1 font-normal"><%= line_item.quantity %> 個</p>
+<%= form_with model: line_item, url: line_item_path(line_item), method: :patch do |form| %>
+  <%= form.number_field :quantity,class:"appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+  <%= form.submit "変更",class:"shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-sm py-1 px-2 rounded" %> 
+<% end %>
                   <p class="mb-1 font-normal"><%= include_tax_in_yen(line_item.amount) %> 円</p>
                   <div class="card__btn-trash col-1">
                     <%= button_to line_item_path(line_item), method: :delete, data: { turbo_frame: "cart" }, class: "btn-trash" do %>

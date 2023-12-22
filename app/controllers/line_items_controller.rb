@@ -17,9 +17,16 @@ class LineItemsController < ApplicationController
     line_item.save
     redirect_to carts_path()
   end
+
   def destroy
     line_item = LineItem.find(params[:id])
     line_item.destroy
     redirect_to carts_path()
+  end
+
+  def update
+    line_item = LineItem.find(params[:id])
+    line_item.update(quantity: params[:line_item][:quantity])
+    redirect_to carts_path
   end
 end
