@@ -26,7 +26,14 @@ class LineItemsController < ApplicationController
 
   def update
     line_item = LineItem.find(params[:id])
-    line_item.update(quantity: params[:line_item][:quantity])
+    quantity = params[:line_item][:quantity].to_i
+
+    if quantity <= 0
+      line_item.destroy
+    else
+      line_item.update(quantity: quantity)
+    end
+
     redirect_to carts_path
   end
 end
