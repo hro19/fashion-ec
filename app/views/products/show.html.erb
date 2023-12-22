@@ -1,25 +1,29 @@
-
 <div class="container">
   <div class="product">
-    <%= image_tag @product.image, class: "product-img" %>
-    <div class="product__content-header text-center">
-      <div class="product__name">
-        <%= @product.name %>
-      </div>
-      <div class="product__price">
-        税込み価格：¥<%= include_tax_in_yen(@product.price) %>
-      </div>
-    </div>
-    <%= @product.description %>
- 
+<div class="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-60 md:w-80">
+    <div class="block w-full h-full">
+        <%= image_tag @product.image, class: "object-cover w-full max-h-40" %>
+        <div class="w-full text-white p-4 bg-white dark:bg-gray-800">
+            <p class="font-medium text-indigo-500 text-md">
+                <%= @product.name %>
+            </p>
+            <p class="mb-2 text-xl">
+                税込み価格：¥<%= include_tax_in_yen(@product.price) %>
+            </p>
+            <p class="text-md">
+                <%= @product.description %>
+            </p>
+            <p>最終更新日:<%= updated_at_jp(@product.updated_at) %></p>
+        </div>
     <%= form_with url: line_items_path(product_id: @product.id), method: :post do |f| %>
-      <div class="product__quantity">
+      <div class="product__quantity box-border w-10/12 mx-auto my-2">
         <%= f.number_field :quantity, in: 1..10, value: 1,class: "block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-      </div>
-      <p>最終更新日:<%= updated_at_jp(@product.updated_at) %></p>
-      <div class="product__btn-add-cart">
-        <%= f.submit "カートに追加する", class: "bg-blue-400 hover:bg-blue-300 text-white rounded px-4 py-2 mt-2" %>
+        <div class="product__btn-add-cart">
+          <%= f.submit "カートに追加する", class: "bg-blue-400 hover:bg-blue-300 text-white rounded px-4 py-2 mt-2" %>
+        </div>
       </div>
     <% end %>
+    </div>
+</div>
   </div>
 </div>
